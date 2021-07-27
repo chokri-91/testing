@@ -3,7 +3,7 @@
 {% block main_body %}
 
     <main>
-        <p>Bienvenu(e) {{ name }}!</p>
+        <p>Bienvenu(e) {{ name|upper }}!</p>
 
         <ul>
         {# Boucle Twig parcourant un tableau associatif de fruits et de couleurs #}
@@ -25,11 +25,11 @@
 
             {# Exemple d'hyperlien en écrivant l'URL en dur dans le code #}
 
-            <li><a class="button button-primary" href="">Hello World</a></li>
+            <li><a class="button button-primary" href="hello">Hello World</a></li>
 
             {# Exemple d'hyperlien utilisant la fonction path() faisant un routing inversé #}
 
-            <li><a class="button button-primary" href="">Dire Bonjour !</a></li>
+            <li><a class="button button-primary" href="{{ path('hello',{'firstName':'Walid','age':10})}}">Dire Bonjour !</a></li>
 
             {# Exemple d'hyperlien utilisant la fonction path() faisant un routing inversé #}
 
