@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block main_body %}
+
+    <main>
+        <p>Bienvenu(e) {{ name }}!</p>
+
+        <ul>
+        {# Boucle Twig parcourant un tableau associatif de fruits et de couleurs #}
+           {% for key, fruit in fruits %}
+               <li> {{key}} est {{ fruit }} </li>
+           {% endfor %}
+
+        </ul>
+
+    </main>
+
+{% endblock %}
+
+{% block nav %}
+
+    <nav>
+
+        <ul class="link-list">
+
+            {# Exemple d'hyperlien en écrivant l'URL en dur dans le code #}
+
+            <li><a class="button button-primary" href="">Hello World</a></li>
+
+            {# Exemple d'hyperlien utilisant la fonction path() faisant un routing inversé #}
+
+            <li><a class="button button-primary" href="">Dire Bonjour !</a></li>
+
+            {# Exemple d'hyperlien utilisant la fonction path() faisant un routing inversé #}
+
+            <li><a class="button button-primary" href="">Clients</a></li>
+
+            {# Exemple d'hyperlien utilisant la fonction path() faisant un routing inversé #}
+
+            <li><a class="button button-primary" href="">Clients (Doctrine ORM)</a></li>
+
+
+            {# Exemple d'hyperlien utilisant la fonction path() faisant un routing inversé #}
+
+            <li><a class="button button-primary" href="">Flickr</a></li>
+
+        </ul>
+
+    </nav>
+
+{% endblock %}
