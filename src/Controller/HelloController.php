@@ -8,8 +8,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HelloController extends AbstractController
 {
-    #[Route('/hello', name: 'hello')]
-    
+    #[Route('/hello/{firstName}/{age}', name: 'hello')]
+
     public function index(string $firstName = 'Chokri',int $age = 20): Response
     {
         if($age < 18)

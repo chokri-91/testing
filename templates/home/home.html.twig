@@ -29,11 +29,11 @@
 
             {# Exemple d'hyperlien utilisant la fonction path() faisant un routing inversé #}
 
-            <li><a class="button button-primary" href="{{ path('hello',{'firstName':'Walid','age':10})}}">Dire Bonjour !</a></li>
+            <li><a class="button button-primary" href="{{ path('hello',{'firstName':'Walid','age':10}) }}">Dire Bonjour !</a></li>
 
             {# Exemple d'hyperlien utilisant la fonction path() faisant un routing inversé #}
 
-            <li><a class="button button-primary" href="">Clients</a></li>
+            <li><a class="button button-primary" href="{{ path('customer_list') }}">Clients</a></li>
 
             {# Exemple d'hyperlien utilisant la fonction path() faisant un routing inversé #}
 
