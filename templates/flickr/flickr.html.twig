@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = "Recherche Flickr" %}
+
+{% block styleSheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset("lightbox2/css/lightbox.css") }}">
+{% endblock %}
+
+{% block javaScripts %}
+    {{ parent() }}
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="{{ asset("lightbox2/js/lightbox.js") }}"></script>
+{% endblock %}
+
+{% block main_body %}
+    <form class="generic-form" action="{{ path('flickr_search') }}" method="POST">
+        <fieldset>
+            <legend>Recherche Flickr</legend>
+            <ul>
+                <li>
+                    <label for="tagList" title="Séparés par des virgules">Tags :</label>
+                    <input id="tagList" name="search" type="text" value="{{ search|default('') }}">
+                </li>
+                <li>
+                    <button class="button button-primary" type="submit">Rechercher</button>
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+    
+    {% if flickrPhotos is defined %}
+        <hr>
+        {% if flickrPhotos is empty %}
+            <p>Aucune photo n'a été trouvée :-(</p>
+        {% else %}
+            <ul class="link-list photos">
+                {# Boucle Twig parcourant un tableau associatif d'objets de la classe FlickrPhoto #}
+                {% for flickrPhoto in flickrPhotos %}
+                    <li>
+                        <a href="{{ flickrPhoto.bigUrl }}" data-lightbox="flickr" data-title="{{ flickrPhoto.title }}">
+                            <img src="{{ flickrPhoto.thumbnailUrl }}" alt="{{ flickrPhoto.title }}">
+                            {# Twig va automatiquement appeler la méthode getThumbnailUrl() de la classe FlickrPhoto #}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block nav %}
+    <nav>
+        <hr>
+        <ul class="link-list">
+            {# Exemple d'hyperlien utilisant la fonction path() faisant un routing inversé #}
+            <li><a class="button button-primary" href="{{ path('home') }}">Accueil</a></li>
+        </ul>
+    </nav>
+{% endblock %}
